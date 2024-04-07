@@ -87,5 +87,6 @@ A GET request will return the current state for all bridges:
         "location":[52.0016,4.3636],
         "...":"..."
     }
+  ]
 }
 ```
