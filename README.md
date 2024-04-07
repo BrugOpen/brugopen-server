@@ -73,19 +73,20 @@ A GET request will return the current state for all bridges:
         {"id":5397658,"start":1712489796,"end":1712490092,"certainty":3,"vesselTypes":["Passagierschip"],"ended":true}
       ],
       "lastWeekStats":{"num":81,"avgTime":336,"numMorning":6,"numEvening":3},
-	  "nearbyBridges":[
+	    "nearbyBridges":[
         ["bosrandbrug",5.37],
         ["vrouwenakkerbrug",5.49],
         ["schipholdraaibrug",6.08],
         ["prinses-irenebrug-uithoorn",7.2]
+      ]
     },
     {
         "name":"abtswoudsebrug",
         "title":"Abtswoudsebrug",
         "city":"Delft",
         "location":[52.0016,4.3636],
-        (...)
+        /* ... */
     }
-    (...)
+    /* ... */
 }
 ```
