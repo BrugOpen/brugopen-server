@@ -1,0 +1,16 @@
+{
+  "name": "brugopen-server",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/BrugOpen/brugopen-server",
+  "type": "module",
+  "main": "server.js",
+  "dependencies": {
+    "ws": "^8.16.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Erik Hoogeboom"
+}
