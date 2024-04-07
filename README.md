@@ -60,7 +60,7 @@ A GET request will return the current state for all bridges:
         52.2737,
         4.751
       ],
-      lastOperations":[
+      "lastOperations":[
         {"id":5398275,"start":1712507387,"end":1712507670,"certainty":3,"ended":true},
         {"id":5398259,"start":1712506470,"end":1712506747,"certainty":3,"ended":true},
         {"id":5398218,"start":1712504722,"end":1712505067,"certainty":3,"vesselTypes":["Passagierschip"],"ended":true},
