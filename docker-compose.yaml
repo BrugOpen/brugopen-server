@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  app:
+    build:
+      context: .
+    environment:
+      - STATUS_URL=${STATUS_URL}
+      - HTTP_PORT=${HTTP_PORT}
+      - WEBSOCKET_PORT=${WEBSOCKET_PORT}
+    ports:
+      - ${HTTP_PORT}:${HTTP_PORT}
+      - ${WEBSOCKET_PORT}:${WEBSOCKET_PORT}
+    command: node server.js
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: 3
