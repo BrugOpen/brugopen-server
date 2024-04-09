@@ -77,11 +77,31 @@ class HttpRequestProcessor {
 
                             if (requestObject.type == 'operation') {
 
-                                this.eventEmitter.emit('operationStatus', requestObject);
+                                try {
+
+                                    this.eventEmitter.emit('operationStatus', requestObject);
+
+                                } catch (e) {
+
+                                    error = 'Error while emitting operationStatus event';
+
+                                    console.log(error + ': ' + e);
+
+                                }
 
                             } else if (requestObject.type == 'bridge') {
 
-                                this.eventEmitter.emit('bridgeStatus', requestObject);
+                                try {
+
+                                    this.eventEmitter.emit('bridgeStatus', requestObject);
+
+                                } catch (e) {
+
+                                    error = 'Error while emitting bridgeStatus event';
+
+                                    console.log(error + ': ' + e);
+
+                                }
 
                             } else {
 
