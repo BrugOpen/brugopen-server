@@ -3,10 +3,10 @@ import EventEmitter from 'node:events';
 
 class BridgeStatusController {
 
-    /**
-     *
-     * @param {EventEmitter} eventEmitter
-     */
+	/**
+	 *
+	 * @param {EventEmitter} eventEmitter
+	 */
 	constructor(eventEmitter) {
 
 		this.eventEmitter = eventEmitter;
@@ -15,7 +15,7 @@ class BridgeStatusController {
 
 	}
 
-    processOperationStatus(operationStatus) {
+	processOperationStatus(operationStatus) {
 
 		const bridgeName = operationStatus.bridge;
 
@@ -102,7 +102,7 @@ class BridgeStatusController {
 
 		}
 
-    };
+	};
 
 	processCompleteBridgeStatus(bridges) {
 
@@ -120,7 +120,7 @@ class BridgeStatusController {
 
 	processBridgeStatus(bridgeStatus) {
 
-		if (typeof(bridgeStatus.name) == 'undefined') {
+		if (typeof (bridgeStatus.name) == 'undefined') {
 
 			return;
 
@@ -236,6 +236,12 @@ class BridgeStatusController {
 				if (operation.end != null) {
 
 					existingOperation.end = operation.end;
+
+				}
+
+				if (('vesselTypes' in operation) && (operation.vesselTypes != null) && (operation.vesselTypes.length > 0)) {
+
+					existingOperation.vesselTypes = operation.vesselTypes;
 
 				}
 
@@ -445,16 +451,15 @@ class BridgeStatusController {
 
 	}
 
-    compareOperationsByStartDesc(a,b)
-    {
-    	if ((a.start != null) && (b.start != null)) {
-    		if (a.start < b.start)
-    			return 1;
+	compareOperationsByStartDesc(a, b) {
+		if ((a.start != null) && (b.start != null)) {
+			if (a.start < b.start)
+				return 1;
 			if (a.start > b.start)
-    			return -1;
-    	}
-    	return 0;
-    }
+				return -1;
+		}
+		return 0;
+	}
 
 	broadcastBridgeStatus(bridgeStatus) {
 
