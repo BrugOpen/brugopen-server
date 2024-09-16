@@ -311,6 +311,11 @@ class BridgeStatusController {
 
 		updatedBridgeStatus.name = bridgeStatus.name;
 		updatedBridgeStatus.title = bridgeStatus.title;
+
+		if (bridgeStatus.distinctiveTitle) {
+			updatedBridgeStatus.distinctiveTitle = bridgeStatus.distinctiveTitle;
+		}
+
 		updatedBridgeStatus.city = bridgeStatus.city;
 
 		if (bridgeStatus.city2) {
