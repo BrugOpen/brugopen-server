@@ -116,6 +116,75 @@ class BridgeStatusController {
 
 		// detect gone bridges
 
+		const goneBridges = [];
+
+		for (var i = 0; i < this.bridges.length; i++) {
+
+			const existingBridge = this.bridges[i];
+			let found = false;
+
+			for (var j = 0; j < bridges.length; j++) {
+
+				if (existingBridge.name == bridges[j].name) {
+
+					found = true;
+					break;
+
+				}
+
+			}
+
+			if (!found) {
+
+				goneBridges.push(existingBridge);
+
+			}
+
+		}
+
+		if (goneBridges.length > 0) {
+
+			console.log('Gone bridges detected');
+
+			const keepBridges = [];
+
+			for (var i = 0; i < this.bridges.length; i++) {
+
+				let gone = false;
+
+				for (var j = 0; j < goneBridges.length; j++) {
+
+					const goneBridge = goneBridges[j];
+
+					if (goneBridge.name == this.bridges[i].name) {
+
+						console.log('Bridge ' + goneBridge.name + ' is gone');
+
+						gone = true;
+						break;
+
+					}
+
+				}
+
+				if (!gone) {
+
+					keepBridges.push(this.bridges[i]);
+
+				}
+
+			}
+
+			this.bridges = keepBridges;
+
+			this.lastUpdate = Math.round(new Date().getTime() / 1000);
+
+			console.log('Brodcasting init bridge status');
+
+			this.broadcastInitBridges(this.lastUpdate, this.bridges);
+
+		}
+
 	}
 
 	processBridgeStatus(bridgeStatus) {
@@ -471,6 +540,18 @@ class BridgeStatusController {
 		const broadcastMessage = {};
 		broadcastMessage.type = 'bridge';
 		broadcastMessage.status = bridgeStatus;
+		broadcastMessage.time = Math.round(new Date().getTime() / 1000);
+
+		this.eventEmitter.emit('broadcast', broadcastMessage);
+
+	}
+
+	broadcastInitBridges(lastUpdate, bridges) {
+
+		var broadcastMessage = {};
+		broadcastMessage.type = 'init';
+		broadcastMessage.lastUpdate = lastUpdate;
+		broadcastMessage.bridges = bridges;
 		broadcastMessage.time = Math.round(new Date().getTime() / 1000);
 
 		this.eventEmitter.emit('broadcast', broadcastMessage);
