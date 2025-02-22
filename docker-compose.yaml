@@ -6,10 +6,12 @@ services:
     environment:
       - STATUS_URL=${STATUS_URL}
       - HTTP_PORT=${HTTP_PORT}
+      - HTTP_EVENTS_PORT=${HTTP_EVENTS_PORT}
       - WEBSOCKET_PORT=${WEBSOCKET_PORT}
     ports:
       - ${HTTP_PORT}:${HTTP_PORT}
       - ${WEBSOCKET_PORT}:${WEBSOCKET_PORT}
+      - ${HTTP_EVENTS_PORT}:${HTTP_EVENTS_PORT}
     command: node server.js
     restart: unless-stopped
     logging:

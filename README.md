@@ -1,9 +1,9 @@
-# BrugOpen Back-end and WebSocket server
+# BrugOpen Back-end and WebSocket/EventSource server
 This NodeJS server holds the 'current' state of all bridges on brugopen.nl. It uses both pull and push to keep the state current.
 
 The PHP application that processes NDW messages uses POST request to notify the Back-end of operation updates. And the Back-end server automatically updates the state by calling a (non-public) API to get the latest state from the database.
 
-Updates about bridges are sent to all connected WebSocket listeners.
+Updates about bridges are sent to all connected WebSocket and EventSource listeners.
 
 # Requirements
 
@@ -25,7 +25,8 @@ The application accepts the following environment variables:
 | ------------------- | ------------------------------------------------------------ | -------------------- |
 | STATUS_URL          | the API url to fetch the current state from (required)       | (none)               |
 | HTTP_PORT           | the port where the HTTP API will listen to                   | 3080                 |
-| WEBSOCKET_PORT      | the port where the WebSocket server                          | 3081                 |
+| WEBSOCKET_PORT      | the port where the WebSocket server will listen to           | 3081                 |
+| HTTP_EVENTS_PORT    | the port where the EventSource HTTP server will listen on    | 3082                 |
 
 # HTTP API
 
